@@ -1,81 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrando no grupo...</title>
 
-    <title>Aguarde...</title>
+  <!-- Prévia quando o link for compartilhado (WhatsApp, Instagram etc.) -->
+  <meta property="og:title" content="Entre no nosso grupo">
+  <meta property="og:description" content="Clique para entrar no grupo oficial no WhatsApp.">
+  <meta name="description" content="Redirecionando para o grupo oficial no WhatsApp.">
+  <meta name="theme-color" content="#0b141a">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #111827;
-            color: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    :root {
+      --verde: #25d366;
+      --verde-escuro: #128c7e;
+      --fundo: #0b141a;
+      --card: #111b21;
+      --texto: #e9edef;
+      --texto-suave: #8696a0;
+    }
 
-        .container {
-            text-align: center;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--fundo);
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(37, 211, 102, 0.12), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(18, 140, 126, 0.15), transparent 45%);
+      color: var(--texto);
+    }
 
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255,255,255,.15);
-            border-top: 5px solid #25D366;
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-            margin: 0 auto 24px;
-        }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 40px 28px 32px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      animation: entrar 0.6s ease-out;
+    }
 
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+    @keyframes entrar {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        p {
-            color: #b5b5b5;
-            font-size: 16px;
-        }
+    /* Ícone com anel de progresso */
+    .icone-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 28px;
+    }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    .anel {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
+    }
 
-    <script>
-        const DELAY = 1000; // 2 segundos
+    .anel circle {
+      fill: none;
+      stroke-width: 4;
+    }
 
-        setTimeout(() => {
-            window.location.replace("https://chat.whatsapp.com/IbchSwaNkMCBrNNxlVcQk0");
-        }, DELAY);
-    </script>
+    .anel .base { stroke: rgba(255, 255, 255, 0.08); }
 
+    .anel .progresso {
+      stroke: var(--verde);
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 0.1s linear;
+    }
+
+    .icone {
+      position: absolute;
+      inset: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      animation: pulso 2s infinite;
+    }
+
+    @keyframes pulso {
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+      70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    .icone svg { width: 40px; height: 40px; fill: #fff; }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: var(--texto-suave);
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .sub strong { color: var(--verde); }
+
+    .botao {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--verde);
+      color: #0b141a;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, filter 0.15s;
+    }
+
+    .botao:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .botao:active { transform: translateY(0); }
+    .botao svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .seguro {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--texto-suave);
+    }
+
+    .seguro svg { width: 14px; height: 14px; fill: var(--texto-suave); }
+  </style>
 </head>
-
 <body>
 
-    <div class="container">
-
-        <div class="loader"></div>
-
-        <h1>Acessando o grupo oficial...</h1>
-
-        <p>Você sera redirecionado para o Whatsapp.</p>
-
+  <main class="card">
+    <div class="icone-wrap">
+      <svg class="anel" viewBox="0 0 110 110">
+        <circle class="base" cx="55" cy="55" r="50"></circle>
+        <circle class="progresso" id="progresso" cx="55" cy="55" r="50"></circle>
+      </svg>
+      <div class="icone">
+        <!-- Ícone de grupo/conversa -->
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
     </div>
+
+    <h1>Entrando no grupo</h1>
+    <p class="sub">Você será redirecionado em <strong id="contador">3</strong> segundos...</p>
+
+    <a class="botao" id="botao" href="#">
+      <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      Entrar agora
+    </a>
+
+    <div class="seguro">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
+      Link oficial e seguro
+    </div>
+  </main>
+
+  <script>
+    // =====================================================
+    //  CONFIGURAÇÃO — troque só aqui quando mudar de grupo
+    // =====================================================
+    const LINK_DO_GRUPO = "https://chat.whatsapp.com/IbchSwaNkMCBrNNxlVcQk0";
+    const SEGUNDOS = 3;
+    // =====================================================
+
+    const botao = document.getElementById("botao");
+    const contador = document.getElementById("contador");
+    const progresso = document.getElementById("progresso");
+    const circunferencia = 314;
+
+    botao.href = LINK_DO_GRUPO;
+
+    const inicio = Date.now();
+    const total = SEGUNDOS * 1000;
+
+    const timer = setInterval(() => {
+      const passado = Date.now() - inicio;
+      const restante = Math.max(0, Math.ceil((total - passado) / 1000));
+      contador.textContent = restante;
+      progresso.style.strokeDashoffset = circunferencia * (1 - Math.min(passado / total, 1));
+
+      if (passado >= total) {
+        clearInterval(timer);
+        window.location.href = LINK_DO_GRUPO;
+      }
+    }, 50);
+  </script>
 
 </body>
 </html>
